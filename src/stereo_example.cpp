@@ -50,7 +50,7 @@ StereoMode::~StereoMode()
     if(pAgent) pAgent->Shutdown();
 }
 
-void StereoMode::initializeVSLAM(std::string configName){
+void StereoMode::initializeVSLAM(std::string& configName){
     if (vocFilePath == "file_not_set" || settingsFilePath == "file_not_set")
     {
         RCLCPP_ERROR(get_logger(), "Please provide valid voc_file and settings_file paths");       

@@ -120,20 +120,18 @@ class StereoMode : public rclcpp::Node
         std::string packagePath = "ros2_test/src/ros2_orb_slam3/";
         std::string nodeName = "";
         std::string vocFilePath = "";
-        std::string settingsFilePath = "";
+        std::string fullSettingsPath = "";
         bool bSettingsFromPython = false;
         
         std::string subexperimentconfigName = "";
         std::string pubconfigackName = "";
         std::string subImgLeftMsgName = "";
         std::string subImgRightMsgName = "";
-        std::string subTimestepMsgName = "";
 
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr expConfig_subscription_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr configAck_publisher_;
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subImgLeftMsg_subscription_;
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subImgRightMsg_subscription_;
-        rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr subTimestepMsg_subscription_;
 
         ORB_SLAM3::System* pAgent;
         ORB_SLAM3::System::eSensor sensorType;
@@ -141,7 +139,6 @@ class StereoMode : public rclcpp::Node
         bool enableOpenCVWindow = false;
 
         void experimentSetting_callback(const std_msgs::msg::String& msg);
-        void Timestep_callback(const std_msgs::msg::Float64& time_msg);
         void ImgLeft_callback(const sensor_msgs::msg::Image& msg);
         void ImgRight_callback(const sensor_msgs::msg::Image& msg);
         

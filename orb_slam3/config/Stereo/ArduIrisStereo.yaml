@@ -1,64 +1,68 @@
 %YAML:1.0
 
 #--------------------------------------------------------------------------------------------
-# Camera Parameters for Gazebo ArduIris Stereo Cam
+# Camera Parameters for Gazebo ArduIris Stereo Cam (PinHole)
 #--------------------------------------------------------------------------------------------
 File.version: "1.0"
 
+# Using PinHole model based on camera_info topic
+# "KannalaBrandt8" or "PinHole"
 Camera.type: "PinHole"
 
-# Camera calibration and distortion parameters (OpenCV)
-# Calculated from horizontal_fov = 2.44346 rad, width = 640
-# fx = fy = (width/2) / tan(fov/2) = 320 / tan(1.22173) = 116.48
-Camera1.fx: 116.48
-Camera1.fy: 116.48
-Camera1.cx: 320.0
-Camera1.cy: 240.0
+# Calibration parameters for Left Camera
+Camera1.fx: 482.08486259
+Camera1.fy: 481.19888798
+Camera1.cx: 306.6069056
+Camera1.cy: 164.67678608
 
-Camera1.k1: -0.3
-Camera1.k2: 0.1
-Camera1.k3: 0.0
-Camera1.p1: 0.0
-Camera1.p2: 0.0
+# Distortion parameters for Left Camera
+Camera1.k1: -0.52292531
+Camera1.k2: 0.34726945
+Camera1.k3: -0.12871743
+Camera1.p1: 0.00092342
+Camera1.p2: 0.0026009
 
-Camera2.fx: 116.48
-Camera2.fy: 116.48
-Camera2.cx: 320.0
-Camera2.cy: 240.0
+# Calibration parameters for Right Camera
+Camera2.fx: 474.02295743
+Camera2.fy: 473.35097147
+Camera2.cx: 311.39220072
+Camera2.cy: 172.540013
 
-Camera2.k1: -0.3
-Camera2.k2: 0.1
-Camera2.k3: 0.0
-Camera2.p1: 0.0
-Camera2.p2: 0.0
+# Distortion parameters for Right Camera
+Camera2.k1: -0.52236179
+Camera2.k2: 0.36457016
+Camera2.k3: -0.15987724
+Camera2.p1: 0.00170065
+Camera2.p2: 0.00298081
 
 Camera.width: 640
 Camera.height: 480
-
-# Camera frames per second 
 Camera.fps: 30
-
-# Color order (0: BGR, 1: RGB)
 Camera.RGB: 1
 
-# Stereo parameters
-Stereo.ThDepth: 40.0
-# Baseline = 0.12m
+# Lapping area
+#Camera1.overlappingBegin: 0
+#Camera1.overlappingEnd: 639
+#Camera2.overlappingBegin: 0
+#Camera2.overlappingEnd: 639
+
+# Stereo parameters (Baseline derived from Translation vector T)
+Stereo.ThDepth: 20.0
 Stereo.T_c1_c2: !!opencv-matrix
   rows: 4
   cols: 4
   dt: f
-  data: [1, 0, 0, 0.12,
-         0, 1, 0, 0,
-         0, 0, 1, 0,
+  data: [0.99995804, -0.00014550, 0.00915970, -0.08745227,
+         0.00005649, 0.99995279, 0.00971686, -0.00136118,
+         -0.00916069, -0.00971594, 0.99991084, -0.00758668,
          0, 0, 0, 1]
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
-ORBextractor.nFeatures: 1200
+ORBextractor.nFeatures: 1500
 ORBextractor.scaleFactor: 1.2
-ORBextractor.nLevels: 8
+ORBextractor.nLevels: 10
 ORBextractor.iniThFAST: 20
 ORBextractor.minThFAST: 7
 

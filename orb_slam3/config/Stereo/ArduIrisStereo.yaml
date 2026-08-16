@@ -1,0 +1,81 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters for Gazebo ArduIris Stereo Cam (PinHole)
+#--------------------------------------------------------------------------------------------
+File.version: "1.0"
+
+# Using PinHole model based on camera_info topic
+# "KannalaBrandt8" or "PinHole"
+Camera.type: "PinHole"
+
+# Calibration parameters for Left Camera
+Camera1.fx: 482.08486259
+Camera1.fy: 481.19888798
+Camera1.cx: 306.6069056
+Camera1.cy: 164.67678608
+
+# Distortion parameters for Left Camera
+Camera1.k1: -0.52292531
+Camera1.k2: 0.34726945
+Camera1.k3: -0.12871743
+Camera1.p1: 0.00092342
+Camera1.p2: 0.0026009
+
+# Calibration parameters for Right Camera
+Camera2.fx: 474.02295743
+Camera2.fy: 473.35097147
+Camera2.cx: 311.39220072
+Camera2.cy: 172.540013
+
+# Distortion parameters for Right Camera
+Camera2.k1: -0.52236179
+Camera2.k2: 0.36457016
+Camera2.k3: -0.15987724
+Camera2.p1: 0.00170065
+Camera2.p2: 0.00298081
+
+Camera.width: 640
+Camera.height: 480
+Camera.fps: 30
+Camera.RGB: 1
+
+# Lapping area
+#Camera1.overlappingBegin: 0
+#Camera1.overlappingEnd: 639
+#Camera2.overlappingBegin: 0
+#Camera2.overlappingEnd: 639
+
+# Stereo parameters (Baseline derived from Translation vector T)
+Stereo.ThDepth: 20.0
+Stereo.T_c1_c2: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [0.99995804, -0.00014550, 0.00915970, -0.08745227,
+         0.00005649, 0.99995279, 0.00971686, -0.00136118,
+         -0.00916069, -0.00971594, 0.99991084, -0.00758668,
+         0, 0, 0, 1]
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+ORBextractor.nFeatures: 1500
+ORBextractor.scaleFactor: 1.2
+ORBextractor.nLevels: 10
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -3.5
+Viewer.ViewpointF: 500.0
